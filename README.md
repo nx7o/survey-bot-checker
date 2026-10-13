@@ -23,6 +23,16 @@ npm install
 npm run dev
 ```
 
+## Deploy to Cloudflare Pages
+
+The workflow in `.github/workflows/cloudflare-pages.yml` builds and deploys `dist` on every push to `main`.
+Add two repository secrets (Settings > Secrets and variables > Actions):
+
+- `CLOUDFLARE_API_TOKEN`: an API token with the "Cloudflare Pages: Edit" permission
+- `CLOUDFLARE_ACCOUNT_ID`: your account ID, shown on the Cloudflare dashboard
+
+The first run creates the `survey-bot-checker` Pages project. Without the secrets the job skips itself.
+
 ## Limits
 
 - Everything runs in the browser, so every signal can be forged by a determined attacker. A real deployment must re-verify on a server.
